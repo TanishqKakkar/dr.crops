@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Crop - Plant Disease Detector</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- Welcome Page -->
+    <div id="welcomePage" class="welcome-container">
+        <h1>🌿 Welcome to Dr. Crop 🌿</h1>
+        <p>Click on the button below to get started!</p>
+        <button id="startBtn">Home</button>
+    </div>
+
+    <!-- Main App -->
+    <div id="mainApp" class="hidden">
+        <header>
+            <h1>🌿 Dr. Crop 🌿</h1>
+            <p>Your AI-powered Plant Disease Detection Assistant</p>
+        </header>
+
+        <main>
+            <section class="upload-section">
+                <h2>📸 Upload a Plant Image</h2>
+                <input type="file" id="imageInput" accept="image/*">
+                <div id="previewContainer">
+                    <img id="previewImage" src="" alt="Image Preview" style="display: none;">
+                </div>
+                <button id="checkDiseaseBtn">🔍 Check Disease</button>
+                <p id="resultText"></p>
+                <button id="treatmentBtn" class="hidden">💊 Get Treatment Suggestions</button>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2025 Dr. Crop. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

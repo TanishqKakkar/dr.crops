@@ -1,0 +1,102 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background-color: hsl(105, 100%, 90%); /* Pastel Green */
+    margin: 0;
+    padding: 0;
+}
+
+/* Welcome Page */
+.welcome-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #A7E9AF;
+    color: #2E4C27;
+}
+
+.welcome-container button {
+    background-color: #6AC47E;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.welcome-container button:hover {
+    background-color: #4DA55F;
+}
+
+/* Hide Main App Initially */
+.hidden {
+    display: none;
+}
+
+/* Header */
+header {
+    background-color: #A7E9AF;
+    color: #2E4C27;
+    padding: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* Upload Section */
+.upload-section {
+    background: white;
+    padding: 20px;
+    width: 50%;
+    margin: 30px auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+input[type="file"] {
+    margin: 10px 0;
+}
+
+/* Buttons */
+button {
+    background-color: #349f49;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.3s;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: #4DA55F;
+}
+
+/* Image Preview */
+#previewContainer {
+    margin: 20px 0;
+}
+
+#previewImage {
+    max-width: 100%;
+    max-height: 300px;
+    border: 2px solid #ddd;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #A7E9AF;
+    color: #2E4C27;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
