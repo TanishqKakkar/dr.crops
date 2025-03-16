@@ -1,0 +1,75 @@
+import os
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import random
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from glob import glob
+
+# Set dataset path (Make sure this is the correct path)
+DATASET_PATH = r"D:\dr.crops\plantvillage dataset\color"
+
+# Get class names (subdirectories)
+class_names = sorted(os.listdir(DATASET_PATH))
+
+# Count images per class
+image_counts = {cls: len(glob(os.path.join(DATASET_PATH, cls, "*.jpg"))) for cls in class_names}
+
+# Print dataset information
+print("Total Classes:", len(class_names))
+print("Images Per Class:", image_counts)
+
+# Plot dataset distribution
+plt.figure(figsize=(10, 5))
+sns.barplot(x=list(image_counts.keys()), y=list(image_counts.values()), palette="viridis")
+plt.xticks(rotation=45)
+plt.xlabel("Tomato Disease Type")
+plt.ylabel("Number of Images")
+plt.title("Distribution of Images in PlantVillage Dataset")
+plt.show()
+
+# Function to show sample images
+def show_sample_images(dataset_path, class_names):
+    plt.figure(figsize=(12, 8))
+
+    for i, cls in enumerate(class_names[:5]):  # Show first 5 classes
+        image_path = random.choice(glob(os.path.join(dataset_path, cls, "*.jpg")))
+        image = cv2.imread(image_path)
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+        plt.subplot(2, 3, i + 1)
+        plt.imshow(image)
+        plt.title(cls)
+        plt.axis("off")
+
+    plt.tight_layout()
+    plt.show()
+
+# Call the function
+show_sample_images(DATASET_PATH, class_names)
+
+# Define Data Augmentation
+datagen = ImageDataGenerator(
+    rescale=1./255,  # Normalize
+    rotation_range=30,
+    zoom_range=0.2,
+    width_shift_range=0.2,
+    height_shift_range=0.2,
+    horizontal_flip=True
+)
+
+# Load Training Data
+train_generator = datagen.flow_from_directory(
+    DATASET_PATH, target_size=(224, 224), batch_size=32, class_mode='categorical'
+)
+
+# Display Augmented Images
+augmented_images, _ = next(train_generator)
+
+plt.figure(figsize=(10, 5))
+for i in range(5):
+    plt.subplot(1, 5, i + 1)
+    plt.imshow(augmented_images[i])
+    plt.axis("off")
+plt.show()
